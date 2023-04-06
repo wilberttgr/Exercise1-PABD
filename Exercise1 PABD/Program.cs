@@ -45,7 +45,8 @@ namespace Exercise1_PABD
                                         Console.WriteLine("1. Melihat seluruh data");
                                         Console.WriteLine("2. Tambah data");
                                         Console.WriteLine("3. Hapus Data");
-                                        Console.WriteLine("4. Keluar");
+                                        Console.WriteLine("4. Cari Data");
+                                        Console.WriteLine("5. Keluar");
                                         Console.WriteLine("\nEnter your choice (1-3): ");
                                         char ch = Convert.ToChar(Console.ReadLine());
                                         switch (ch)

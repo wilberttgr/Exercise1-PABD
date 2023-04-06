@@ -94,11 +94,27 @@ namespace Exercise1_PABD
                                                     }
                                                     catch
                                                     {
-                                                        Console.WriteLine("\nAnda tidak memiliki akses untuk menambah data");
+                                                        Console.WriteLine("\nAnda tidak memiliki akses untuk menghapus data");
                                                     }
                                                 }
-                                                return;
+                                                break;
                                             case '4':
+                                                {
+                                                    Console.Clear();
+                                                    Console.WriteLine("Hapus Data Mahasiswa\n");
+                                                    Console.WriteLine("Masukkan NIM :");
+                                                    string NIM = Console.ReadLine();
+                                                    try
+                                                    {
+                                                        pr.search(NIM, conn);
+                                                    }
+                                                    catch
+                                                    {
+                                                        Console.WriteLine("\nAnda tidak memiliki akses untuk mencari data");
+                                                    }
+                                                }
+                                                break;
+                                            case '5':
                                                 {
                                                     conn.Close();
                                                 }
@@ -168,11 +184,21 @@ namespace Exercise1_PABD
         public void delete(string NIM, SqlConnection conn)
         {
             string str = "";
-            str = "delete from HRD.MAHASISWA where NIM = @nim";
+            str = "delete from HRD.MAHASISWA (NIM)" + "values(@nim)";
             SqlCommand cmd = new SqlCommand(str, conn);
             cmd.CommandType = CommandType.Text;
-
             cmd.Parameters.Remove(new SqlParameter("nim", NIM));
+            cmd.ExecuteNonQuery();
+            Console.WriteLine("Data Berhasil Dihapus");
+        }
+
+        public void search(string NIM, SqlConnection conn)
+        {
+            string str = "";
+            str = "delete from HRD.MAHASISWA (NIM)" + "values(@nim)";
+            SqlCommand cmd = new SqlCommand(str, conn);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.IndexOf(new SqlParameter("nim", NIM));
             cmd.ExecuteNonQuery();
             Console.WriteLine("Data Berhasil Dihapus");
         }

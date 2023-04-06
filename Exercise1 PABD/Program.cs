@@ -91,7 +91,6 @@ namespace Exercise1_PABD
                                                     try
                                                     {
                                                         pr.delete(NIM, conn);
-                                                        conn.Close();
                                                     }
                                                     catch
                                                     {
